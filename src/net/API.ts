@@ -1,35 +1,34 @@
-import { AxiosRequestConfig, Method } from "axios";
-import { client } from "../utils/request";
-import { Http } from "./Http";
-import { APICode, APIRequest, APIResponse } from "./Inter";
+import { AxiosRequestConfig } from 'axios'
+import { client } from '../utils/request'
+import { Http } from './Http'
+import { APICode, APIRequest, APIResponse } from './Inter'
 
 export abstract class ProAPI implements Http {
-
-  private _code: number = APICode.ELSE_ERROR;
-  private _request: APIRequest = new APIRequest();
-  private _response: APIResponse = new APIResponse();
-  protected abstract getConfig(): AxiosRequestConfig;
+  private _code: number = APICode.ELSE_ERROR
+  private _request: APIRequest = new APIRequest()
+  private _response: APIResponse = new APIResponse()
+  protected abstract getConfig(): AxiosRequestConfig
 
   constructor() {
-    this._response = new APIResponse();
-  };
+    this._response = new APIResponse()
+  }
 
   public getResponse<T extends APIResponse>(): T {
-    return <T>this._response;
+    return <T>this._response
   }
 
   public getRequest<T extends APIRequest>(): T {
-    return <T>this._request;
+    return <T>this._request
   }
 
   public getCode(): number {
-    return this._code;
+    return this._code
   }
 
   protected setRequest(request: APIRequest): void {
     // TODO 默认token取至何处
-    request.token = null;
-    this._request = request;
+    request.token = null
+    this._request = request
   }
 
   send(): Promise<any> {
@@ -40,31 +39,34 @@ export abstract class ProAPI implements Http {
     //   return Promise.reject("is logining");
     // };
 
-    if (this.getConfig().url === "") {
-      console.warn("baseUrl is empty");
-    };
+    if (this.getConfig().url === '') {
+      console.warn('baseUrl is empty')
+    }
 
     return new Promise((resolve, reject) => {
+      const options = this.getConfig()
 
-      const options = this.getConfig();
-
-      client(options).then(({ data, status }) => {
-        this._response = data;
-
-        if (status !== APICode.SUCCESS) {
-          return reject(new Error('Not Success 200'));
-        };
-
-        if (this._response == null) {
-          this._code = APICode.ELSE_ERROR;
-          return reject(new Error('response == null'));
-        };
-
-        resolve(data);
-
-      }).catch(() => {
-        reject('request fail');
+      client({
+        ...options,
+        ...this._request,
       })
+        .then(({ data, status }) => {
+          this._response = data
+
+          if (status !== APICode.SUCCESS) {
+            return reject(new Error('Not Success 200'))
+          }
+
+          if (this._response == null) {
+            this._code = APICode.ELSE_ERROR
+            return reject(new Error('response == null'))
+          }
+
+          resolve(data)
+        })
+        .catch(() => {
+          reject('request fail')
+        })
     })
   }
-};
+}
