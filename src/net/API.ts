@@ -1,12 +1,15 @@
 import { AxiosRequestConfig } from 'axios'
-import { client } from '../utils/request'
 import { Http } from './Http'
 import { APICode, APIRequest, APIResponse } from './Inter'
+import Client from '../utils/request'
 
-export abstract class ProAPI implements Http {
+export default abstract class ProAPI implements Http {
   private _code: number = APICode.ELSE_ERROR
+
   private _request: APIRequest = new APIRequest()
+
   private _response: APIResponse = new APIResponse()
+
   protected abstract getConfig(): AxiosRequestConfig
 
   constructor() {
@@ -46,7 +49,7 @@ export abstract class ProAPI implements Http {
     return new Promise((resolve, reject) => {
       const options = this.getConfig()
 
-      client({
+      Client({
         ...options,
         ...this._request,
       })
@@ -57,7 +60,7 @@ export abstract class ProAPI implements Http {
             return reject(new Error('Not Success 200'))
           }
 
-          if (this._response == null) {
+          if (this._response == undefined) {
             this._code = APICode.ELSE_ERROR
             return reject(new Error('response == null'))
           }
