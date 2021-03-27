@@ -31,7 +31,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "commit-msg": "commitlint --config .commitlintrc.js -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -82,6 +82,7 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "stylelint": "^13.12.0",
+    "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.3.0",

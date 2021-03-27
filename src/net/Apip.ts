@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
-import { client } from '../utils/request';
 import { Http } from './Http';
 import { APICode, APIRequest, APIResponse } from './Inter';
+import Client from '../utils/request';
 
 export default abstract class ProAPI implements Http {
   protected abstract getConfig(): AxiosRequestConfig;
@@ -49,7 +49,7 @@ export default abstract class ProAPI implements Http {
     return new Promise((resolve, reject) => {
       const options = this.getConfig();
 
-      client({ ...options, ...this._request })
+      Client({ ...options, ...this._request })
         .then(({ data, status }) => {
           this._response = data;
 
