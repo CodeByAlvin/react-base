@@ -1,5 +1,5 @@
 const OFF = 0
-const WARN = 1
+// const WARN = 1
 const ERROR = 2
 
 module.exports = {
@@ -16,9 +16,6 @@ module.exports = {
     'plugin:promise/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
-    'prettier/unicorn',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -37,7 +34,28 @@ module.exports = {
   },
   plugins: ['react', 'unicorn', 'promise', '@typescript-eslint'],
   rules: {
-    // 具体添加的其他规则大家可查看我的 github 查看
-    // https://github.com/vortesnail/react-ts-quick-starter/blob/master/.eslintrc.js
+    'import/extensions': [
+      ERROR,
+      'ignorePackages',
+      {
+        ts: 'never',
+        tsx: 'never',
+        json: 'never',
+        js: 'never',
+      },
+    ],
+    'unicorn/filename-case': [
+      ERROR,
+      {
+        cases: {
+          camelCase: true,
+          pascalCase: true,
+          kebabCase: true,
+        },
+      },
+    ],
+    'max-classes-per-file': ['error', 3],
+    'react/jsx-filename-extension': [ERROR, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/react-in-jsx-scope': OFF,
   },
 }
