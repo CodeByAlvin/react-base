@@ -1,6 +1,6 @@
-const OFF = 0
+const OFF = 0;
 // const WARN = 1
-const ERROR = 2
+const ERROR = 2;
 
 module.exports = {
   env: {
@@ -11,11 +11,11 @@ module.exports = {
   extends: [
     'airbnb',
     'airbnb/hooks',
+    'prettier',
     'plugin:react/recommended',
     'plugin:unicorn/recommended',
     'plugin:promise/recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -57,5 +57,8 @@ module.exports = {
     'max-classes-per-file': ['error', 3],
     'react/jsx-filename-extension': [ERROR, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/react-in-jsx-scope': OFF,
+    'no-underscore-dangle': OFF,
+    'no-use-before-define': OFF,
+    'class-methods-use-this': OFF,
   },
-}
+};
