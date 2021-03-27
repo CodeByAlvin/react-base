@@ -10,3 +10,9 @@
 - style : 代码格式改变
 - test : 增加测试
 - anno: 增加注释
+
+查看最近 5 次提交的 commit 记录
+** git log --oneline -5 **
+
+修改最后一次提交的信息
+** git commit --amend **
