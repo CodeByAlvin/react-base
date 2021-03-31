@@ -30,3 +30,5 @@
 - redux（大家开始嫌弃它重了）
 - unstated-next
 - recoil
+
+6. 国际化（待完善）

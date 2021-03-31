@@ -57,8 +57,13 @@ module.exports = {
     'max-classes-per-file': ['error', 3],
     'react/jsx-filename-extension': [ERROR, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'react/react-in-jsx-scope': OFF,
+    // 不能使用_name 下划线命名
     'no-underscore-dangle': OFF,
     'no-use-before-define': OFF,
+    // 抽象类必须使用this，目前不太理解意义
     'class-methods-use-this': OFF,
+    // {...props}
+    'react/jsx-props-no-spreading': OFF,
+    'react/prop-types': OFF,
   },
 };
