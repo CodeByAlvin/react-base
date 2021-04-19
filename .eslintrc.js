@@ -21,6 +21,7 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      legacyDecorators: true,
     },
     ecmaVersion: 11,
     sourceType: 'module',
@@ -65,5 +66,6 @@ module.exports = {
     // {...props}
     'react/jsx-props-no-spreading': OFF,
     'react/prop-types': OFF,
+    'import/no-unresolved': [2, { ignore: ['^@/'] }],
   },
 };

@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import { AuthorizedRoute } from './components/Authorized';
+import { AuthorizedRoute } from '@/components/Authorized';
 
-import GlobalHeader from './components/GlobalHeader';
-import GlobalFooter from './components/GlobalFooter';
+import GlobalHeader from '@/components/GlobalHeader';
+import GlobalFooter from '@/components/GlobalFooter';
 
-import routeConfig from './router/router.config';
+import routeConfig from '@/router/router.config';
 
 import './App.scss';
 

@@ -1,6 +1,4 @@
 import { Link, Route, Switch } from 'react-router-dom';
-import Another from '../Another';
-import Order from '../Order';
 
 const Home: React.FC = () => (
   <div>
