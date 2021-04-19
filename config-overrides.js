@@ -1,23 +1,11 @@
 const {
   override,
   addWebpackAlias,
-  overrideDevServer,
+  // overrideDevServer,
   addDecoratorsLegacy,
 } = require('customize-cra');
 
 const path = require('path');
-
-const devServerConfig = () => config => {
-  config.proxy = {
-    '/api/': {
-      target: '', // 目的地地址
-      changeOrigin: true,
-      pathRewrite: { '^/api': '/' },
-    },
-  };
-
-  return config;
-};
 
 module.exports = {
   webpack: override(
@@ -26,5 +14,5 @@ module.exports = {
     }),
     addDecoratorsLegacy(),
   ),
-  devServer: overrideDevServer(devServerConfig()),
+  // devServer: overrideDevServer(proxy[REACT_APP_ENV || 'dev']),
 };

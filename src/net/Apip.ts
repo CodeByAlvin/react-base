@@ -12,8 +12,9 @@ export default abstract class ProAPI implements Http {
 
   private _response: APIResponse = new APIResponse();
 
-  constructor() {
+  constructor(request: APIRequest) {
     this._response = new APIResponse();
+    this.setRequest(request);
   }
 
   public getResponse<T extends APIResponse>(): T {
@@ -49,7 +50,10 @@ export default abstract class ProAPI implements Http {
     return new Promise((resolve, reject) => {
       const options = this.getConfig();
 
-      Client({ ...options, ...this._request })
+      Client({
+        ...options,
+        params: this._request,
+      })
         .then(({ data, status }) => {
           this._response = data;
 

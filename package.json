@@ -24,6 +24,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
+    "start:dev": "cross-env REACT_APP_ENV=dev react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
@@ -74,6 +75,7 @@
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
     "conventional-changelog-cli": "^2.1.1",
+    "cross-env": "^7.0.3",
     "eslint": "^7.22.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.1.0",
