@@ -22,17 +22,15 @@
 - prettier
 - eslint
 - stylelint
-- husky（@4. 待升级 5@版本）
+- husky
 - lint-stage
 
 5. 状态管理（本项目未加入任何状态管理工具，这里提供几个较为常用的工具）
 
-- redux（大家开始嫌弃它重了）
+- redux
 - unstated-next
 - recoil
 
-6. 国际化（待完善）
+6. 多语言（待完善）
 
 7. 单元测试（待完善）
-
-8. mock 数据（待完善）
