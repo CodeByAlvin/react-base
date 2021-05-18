@@ -1,3 +1,4 @@
+import { RouteComponentProps } from 'react-router-dom';
 import ErrorFor404 from '../views/Common/ErrorFor404';
 import ErrorFor505 from '../views/Common/ErrorFor505';
 import Home from '../views/Home';
@@ -5,7 +6,7 @@ import Order from '../views/Order';
 
 export interface RouterConfigModel {
   path: string;
-  component: any;
+  component: React.ComponentType<RouteComponentProps> | React.ComponentType;
   routes?: Array<RouterConfigModel>;
   exact?: boolean;
   strict?: boolean;
